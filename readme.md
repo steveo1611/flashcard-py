@@ -1,0 +1,1 @@
+Making flashcard app to work on my python skills and to use it for studying for cert tests.
