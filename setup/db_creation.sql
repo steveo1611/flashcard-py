@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS flashcards.Cards
 (
     CardId INT NOT NULL AUTO_INCREMENT, -- primary key column
     mainsubject NVARCHAR(50) NOT NULL,
-    catagory NVARCHAR(50) NOT NULL,
+    category NVARCHAR(50) NOT NULL,
     question NVARCHAR(200) NOT NULL,
     answer NVARCHAR(200) NOT NULL,
     additional_info NVARCHAR(200),
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS flashcards.Cards
 
 /*  -- for adding test cards
 USE flashcards;
-INSERT INTO cards(mainsubject, catagory, question, answer, additional_info) 
+INSERT INTO cards(mainsubject, category, question, answer, additional_info) 
 VALUES
     ('aws', 's3', 'testq1', 'testa1', 'http://test'),
     ('aws', 's3', 'testq2', 'testa2', 'http://test2'),

@@ -11,29 +11,50 @@ class Cards:
         entry = []
         print("Create flashcard: ")
         subject = input('Please enter main subject: ')
-        catagory = input('Please enter catagory: ')
+        category = input('Please enter catagory: ')
         question = input('Plese enter the flashcard Question: ')
         answer = input('Please enter the Answer: ')
         add_info = input('Please add any additional info: ')
-
-        entry = (subject, catagory, question, answer, add_info)
-        Db_connection.create_card_db(entry)
+        entry = (subject, category, question, answer, add_info)
+        create_card_entry = Db_connection()
+        create_card_entry.create_card_db(entry)
 
     def delete_card(self):
         delete_id = int(input('Please enter the ID # for the card you would like deleted: ' ))
-        Db_connection.del_card_db(delete_id)
+        delete_card_details = Db_connection()
+        delete_card_details.del_card_db(delete_id)
 
     
     def edit_card(self):
-        pass
         edit_id = int(input('Please enter the ID for the card that you want to update: '))
-        edit_card_details = Db_connection.display_card_db(edit_id)
-        print(edit_card_details)
+        edit_card_details = Db_connection()
+        result = edit_card_details.display_card_db(edit_id)
+        print(f"1: Card ID: {result[0]}")
+        print(f"2: Subject: {result[1]}")
+        print(f"3: Question: {result[2]}")
+        print(f"4: Answer: {result[3]}")
+        print(f"5: Addional Info: {result[4]}")
+
     
 
     def display_cards(self):
         pass
+        display_cards_db = Db_connection()
+        return display_cards_db.retrieve_cards_db()
+        #print(list)
 
-#Cards().create_card()
-#Cards().delete_card()
-Cards().edit_card()    
+
+    def display_subject_list(self):
+        pass
+        
+
+
+
+
+
+testcard = Cards()
+#testcard.edit_card()
+#testcard.create_card()
+#testcard.delete_card()
+#testcard.edit_card()
+#testcard.display_cards()
