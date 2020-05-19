@@ -5,7 +5,7 @@ host = 'localhost'
 useradmin = 'sysadmin'
 user = 'sysadmin'  #'dbuser'
 passwd_admin = 'localhost'
-passwd = 'localhost'
+passwd = 'xxx'
 database = 'flashcards'
 
 mydb = mysql.connector.connect(host=host, user=user, passwd=passwd, database=database)
@@ -72,7 +72,18 @@ class Db_connection:
         print(collection)
         return collection
 
+    def display_subject_list_db(self, column, cat=''):
+        if cat != '':
+            sql_column = f'SELECT DISTINCT {cat} FROM cards WHERE mainsubject = "{column}"'
+        else:    
+            sql_column = f'SELECT DISTINCT {column} FROM cards'
+        mycursor = mydb.cursor()
+        mycursor.execute(sql_column)
+        return mycursor.fetchall()
+        
 
-testdb = Db_connection()
+
+#testdb = Db_connection()
 #testdb.retrieve_cards_db()            
-testdb.retrieve_subject_cards_db()
+#testdb.retrieve_subject_cards_db()
+#testdb.display_subject_list_db('mainsubject')

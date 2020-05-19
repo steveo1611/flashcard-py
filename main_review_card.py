@@ -35,6 +35,45 @@ def launch_app():
 
 def study_time():
     pass
+    # ask of what subject and catagory to compile cards for.
+    study_card = Cards()
+    subject_select = ''
+    cat_select = ''
+    subject_list = study_card.display_subject_list('mainsubject')
+    print(subject_list)
+    subject = input('Please select which Subject to review: ')
+    if subject.lower() == 'q':
+            print('Good Bye')
+            return exit()
+    for i in subject_list:
+        if i != subject.lower():
+            pass
+        else:
+            pass
+            #print(i)
+            subject_select = i
+            print(subject_select)
+            #return subject_select
+    cat_list = study_card.display_subject_list(subject_select, 'category')
+    print(cat_list)
+    category = input('Please select which category to review: ')
+    if category.lower() == 'q':
+            print('Good Bye')
+            return exit()
+    for i in cat_list:
+        if i != category.lower():
+            pass
+        else:
+            pass
+            print(i)
+            cat_select = i
+            print(cat_select)
+            #return cat_select        
     
+    study_time()
+    # randomize cards and display first card's question...
+
+    # user answers question / then card's answser is displayed, keep count of questions/answers
+    # display next
 
 launch_app()

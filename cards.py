@@ -44,17 +44,27 @@ class Cards:
         #print(list)
 
 
-    def display_subject_list(self):
+    def display_subject_list(self, column, cat=''):
         pass
-        
+        listing = []
+        display_subject_db = Db_connection()
+        if cat == '':
+            trup_list = display_subject_db.display_subject_list_db(column)
+        else:
+            trup_list = display_subject_db.display_subject_list_db(column, cat)
+        for t in trup_list:
+            for i in t:
+                listing.append(i)
+        return listing
 
 
 
 
 
-testcard = Cards()
+#testcard = Cards()
 #testcard.edit_card()
 #testcard.create_card()
 #testcard.delete_card()
 #testcard.edit_card()
 #testcard.display_cards()
+#testcard.display_subject_list()
