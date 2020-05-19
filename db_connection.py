@@ -1,11 +1,12 @@
 # class for connecting to the database
+# NOTE FOR LATER - how do I reduce the calls to the database, return objects and not have to query everytime
 import mysql.connector
 
 host = 'localhost'
 useradmin = 'sysadmin'
 user = 'sysadmin'  #'dbuser'
 passwd_admin = 'localhost'
-passwd = 'xxx'
+passwd = 'localhost'
 database = 'flashcards'
 
 mydb = mysql.connector.connect(host=host, user=user, passwd=passwd, database=database)
@@ -44,32 +45,32 @@ class Db_connection:
         for row in display_card:
             return display_card
 
-    def retrieve_cards_db(self):
+    def retrieve_card_list_db(self):
         mycursor = mydb.cursor()
-        #sql = ("SELECT * from cards WHERE mainsubject = %s and category = %s")
         sql = ("SELECT * from cards")
-        #value = (subject, cat)
-        #mycursor.execute(sql, value)
         mycursor.execute(sql)
         collection = mycursor.fetchall()
         for i in collection:
             print(i)
 
-    def retrieve_subject_cards_db(self, subject='aws', cat= '' ):
+    #def retrieve_subject_cards_db(self, subject='aws', cat= '' ):
+    def retrieve_subject_cards_db(self, group):    
         #subject = "aws"
-        cat = "s3"
-        collect_list = ()
+        #cat = "s3"
+        collect_list = []
         mycursor= mydb.cursor(buffered=True)
-        sql_rows = "SELECT COUNT(*) FROM cards WHERE mainsubject = %s"
-        sub_var = (subject,)
-        mycursor.execute(sql_rows, sub_var)
-        row_count = (mycursor.fetchone())
-        row_count_int = int('{}'.format(row_count[0]))
-        sql = ("SELECT * from cards WHERE mainsubject = %s and category LIKE %s")
-        value = (subject, cat)
+        #sql_rows = "SELECT COUNT(*) FROM cards WHERE mainsubject = %s"
+        #sub_var = (subject,)
+        #mycursor.execute(sql_rows, sub_var)
+        #row_count = (mycursor.fetchone())
+        #row_count_int = int('{}'.format(row_count[0]))
+        #sql = ("SELECT * from cards WHERE mainsubject = %s and category LIKE %s")
+        sql = ("SELECT * from cards WHERE mainsubject = %s and category = %s")
+        #value = (subject, cat)
+        value = (group[0], group[1])
         mycursor.execute(sql, value)
-        collection = mycursor.fetchmany(row_count_int)
-        print(collection)
+        #collection = mycursor.fetchmany(row_count_int)
+        collection = mycursor.fetchall()
         return collection
 
     def display_subject_list_db(self, column, cat=''):
@@ -80,8 +81,8 @@ class Db_connection:
         mycursor = mydb.cursor()
         mycursor.execute(sql_column)
         return mycursor.fetchall()
-        
 
+        
 
 #testdb = Db_connection()
 #testdb.retrieve_cards_db()            

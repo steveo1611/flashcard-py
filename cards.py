@@ -1,6 +1,7 @@
 # will contain all methods releatd to the flash cards, including the creation, compiling, and ???
 import db_connection 
 from db_connection import Db_connection
+import random
 
 class Cards:
 
@@ -40,7 +41,7 @@ class Cards:
     def display_cards(self):
         pass
         display_cards_db = Db_connection()
-        return display_cards_db.retrieve_cards_db()
+        return display_cards_db.retrieve_card_list_db()
         #print(list)
 
 
@@ -56,7 +57,6 @@ class Cards:
             for i in t:
                 listing.append(i)
         return listing
-
 
 
 
