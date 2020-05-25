@@ -40,13 +40,19 @@ def launch_app():
 
 def study_time():
     pass
+    quest_num = 0
     # ask of what subject and catagory to compile cards for.
     display = Display()
     grouping = display.select_subject_category()
     # grab all the cards and randomize order.
     ##card = Cards()
     collection = display.get_collection(grouping)
-    print(collection)
+    #print(collection)
+    for i in collection:
+        print(f"Question {i} ")
+        
+
+
 
 
    # study_time()

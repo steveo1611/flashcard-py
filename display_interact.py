@@ -43,19 +43,12 @@ class Display:
         return (subject_select, cat_select)
 # maybe next version will use the generation/interation
 
-    def list_collection(self, collection):
-        for i in collection:
-            yield i
-
     def get_collection(self, cgrouping):
         collection = []
         card_collection = Db_connection()
-        collection = card_collection.retrieve_subject_cards_db(cgrouping)
-        random.shuffle(collection)
-        # for i in collection:
-        #    yield i
-        #    print(i)
-        # print(next(i))
-        list_coll = Display()
-        return list_coll.list_collection(collection)
-        # print(next(list_coll))
+        collection_order = card_collection.retrieve_subject_cards_db(cgrouping)
+        random.shuffle(collection_order)
+        for i in collection_order:
+            collection += (i)
+        return collection
+
