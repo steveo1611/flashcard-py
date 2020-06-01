@@ -47,11 +47,14 @@ def study_time():
     # grab all the cards and randomize order.
     ##card = Cards()
     collection = display.get_collection(grouping)
-    #print(collection)
     for i in collection:
-        print(f"Question {i} ")
+        print(f"\nQuestion: {i[3]} ")
+        input('Please Enter your answer: '  )
+        print(f'\nAnswer: {i[4]}\n')
+        print(f'Additional details: {i[5]}\n')
+        quest_num += 1
+        print(f'{quest_num} of {len(collection)}')
         
-
 
 
 

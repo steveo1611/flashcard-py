@@ -48,7 +48,5 @@ class Display:
         card_collection = Db_connection()
         collection_order = card_collection.retrieve_subject_cards_db(cgrouping)
         random.shuffle(collection_order)
-        for i in collection_order:
-            collection += (i)
-        return collection
+        return collection_order
 
