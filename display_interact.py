@@ -16,7 +16,7 @@ class Display:
         subject_select = ''
         cat_select = ''
         subject_list = study_card.display_subject_list('mainsubject')
-        print(subject_list)
+        print(f'Subject list: {subject_list}\n')
         subject = input('Please select which Subject to review: ')
         if subject.lower() == 'q':
             print('Good Bye')
@@ -26,10 +26,10 @@ class Display:
                 pass
             else:
                 subject_select = i
-                print(subject_select)
+                print("\nSubject Selected: " + subject_select + '\n')
 
         cat_list = study_card.display_subject_list(subject_select, 'category')
-        print(cat_list)
+        print(f'Category: {cat_list}\n')
         category = input('Please select which category to review: ')
         if category.lower() == 'q':
             print('Good Bye')
@@ -39,6 +39,7 @@ class Display:
                 pass
             else:
                 cat_select = i
+                print("\nCategory Selected: " + cat_select + '\n')
 
         return (subject_select, cat_select)
 # maybe next version will use the generation/interation

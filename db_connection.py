@@ -12,8 +12,7 @@ database = 'flashcards'
 mydb = mysql.connector.connect(host=host, user=user, passwd=passwd, database=database)
 
 class Db_connection:
-   # mycursor = mydb.cursor()
-    
+   
     def __init__(self):
         self = self
 
@@ -53,23 +52,13 @@ class Db_connection:
         for i in collection:
             print(i)
 
-    #def retrieve_subject_cards_db(self, subject='aws', cat= '' ):
     def retrieve_subject_cards_db(self, group):    
-        #subject = "aws"
-        #cat = "s3"
         collect_list = []
         mycursor= mydb.cursor(buffered=True)
-        #sql_rows = "SELECT COUNT(*) FROM cards WHERE mainsubject = %s"
-        #sub_var = (subject,)
-        #mycursor.execute(sql_rows, sub_var)
-        #row_count = (mycursor.fetchone())
-        #row_count_int = int('{}'.format(row_count[0]))
-        #sql = ("SELECT * from cards WHERE mainsubject = %s and category LIKE %s")
+
         sql = ("SELECT * from cards WHERE mainsubject = %s and category = %s")
-        #value = (subject, cat)
         value = (group[0], group[1])
         mycursor.execute(sql, value)
-        #collection = mycursor.fetchmany(row_count_int)
         collection = mycursor.fetchall()
         return collection
 
